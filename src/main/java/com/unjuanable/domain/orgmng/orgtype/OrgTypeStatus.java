@@ -1,4 +1,4 @@
-package com.unjuanable.domain.orgmng;
+package com.unjuanable.domain.orgmng.orgtype;
 
 /**
  * Description
@@ -7,9 +7,6 @@ package com.unjuanable.domain.orgmng;
  * @version 0.0.1
  * @since 2023/1/16
  */
-public enum OrgStatus {
-    /**
-     *
-     */
+public enum OrgTypeStatus {
     EFFECTIVE
 }

@@ -1,6 +1,7 @@
 package com.unjuanable.adapter.driving.persistence.tenantmng;
 
 import com.unjuanable.domain.tenantmng.TenantRepository;
+import com.unjuanable.domain.tenantmng.TenantStatus;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,4 +13,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class TenantRepositoryJdbc implements TenantRepository {
+    @Override
+    public boolean existsByIdAndStatus(Long tenant, TenantStatus effective) {
+        return false;
+    }
 }

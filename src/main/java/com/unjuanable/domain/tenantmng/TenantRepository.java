@@ -8,4 +8,5 @@ package com.unjuanable.domain.tenantmng;
  * @since 2023/1/16
  */
 public interface TenantRepository {
+    boolean existsByIdAndStatus(Long tenant, TenantStatus effective);
 }

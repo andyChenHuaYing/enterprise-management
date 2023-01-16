@@ -1,6 +1,7 @@
 package com.unjuanable.adapter.driving.persistence.orgmng;
 
-import com.unjuanable.domain.orgmng.EmpRepository;
+import com.unjuanable.domain.orgmng.emp.EmpRepository;
+import com.unjuanable.domain.orgmng.emp.EmpStatus;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,4 +13,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class EmpRepositoryJdbc implements EmpRepository {
+    @Override
+    public boolean existsByIdAndStatus(Long tenant, Long leader, EmpStatus regular, EmpStatus probation) {
+        return false;
+    }
 }

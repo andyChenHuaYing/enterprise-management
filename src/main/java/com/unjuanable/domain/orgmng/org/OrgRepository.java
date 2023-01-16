@@ -1,4 +1,4 @@
-package com.unjuanable.domain.orgmng;
+package com.unjuanable.domain.orgmng.org;
 
 import java.util.Optional;
 

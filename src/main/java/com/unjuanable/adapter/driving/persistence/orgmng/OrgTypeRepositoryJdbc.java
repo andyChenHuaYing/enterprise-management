@@ -1,7 +1,10 @@
 package com.unjuanable.adapter.driving.persistence.orgmng;
 
-import com.unjuanable.domain.orgmng.OrgTypeRepository;
+import com.unjuanable.domain.orgmng.orgtype.OrgTypeRepository;
+import com.unjuanable.domain.orgmng.orgtype.OrgTypeStatus;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * Description
@@ -12,4 +15,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class OrgTypeRepositoryJdbc implements OrgTypeRepository {
+    @Override
+    public boolean existsByCodeAndStatus(Long tenant, String orgType, OrgTypeStatus effective) {
+        return false;
+    }
+
+    @Override
+    public Optional findByCodeAndStatus(Long tenant, String orgType, OrgTypeStatus effective) {
+        return Optional.empty();
+    }
 }

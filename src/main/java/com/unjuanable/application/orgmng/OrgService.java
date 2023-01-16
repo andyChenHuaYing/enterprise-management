@@ -1,11 +1,9 @@
 package com.unjuanable.application.orgmng;
 
-import com.unjuanable.domain.orgmng.EmpRepository;
-import com.unjuanable.domain.orgmng.Org;
-import com.unjuanable.domain.orgmng.OrgRepository;
-import com.unjuanable.domain.orgmng.OrgTypeRepository;
-import com.unjuanable.domain.tenantmng.TenantRepository;
-import com.unjuanable.domain.user.UserRepository;
+import com.unjuanable.domain.orgmng.org.Org;
+import com.unjuanable.domain.orgmng.org.OrgBuilder;
+import com.unjuanable.domain.orgmng.org.OrgBuilderFactory;
+import com.unjuanable.domain.orgmng.org.OrgRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,29 +16,26 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrgService {
-    private final UserRepository userRepository;
-    private final TenantRepository tenantRepository;
-    private final OrgTypeRepository orgTypeRepository;
     private final OrgRepository orgRepository;
-    private final EmpRepository empRepository;
+    private final OrgBuilderFactory orgBuilderFactory;
 
     @Autowired
-    public OrgService(UserRepository userRepository
-            , TenantRepository tenantRepository
-            , OrgRepository orgRepository
-            , EmpRepository empRepository
-            , OrgTypeRepository orgTypeRepository) {
+    public OrgService(OrgRepository orgRepository, OrgBuilderFactory orgBuilderFactory) {
 
-        this.userRepository = userRepository;
-        this.tenantRepository = tenantRepository;
-        this.orgTypeRepository = orgTypeRepository;
         this.orgRepository = orgRepository;
-        this.empRepository = empRepository;
+        this.orgBuilderFactory = orgBuilderFactory;
     }
 
     public OrgDto addOrg(OrgDto request, Long userId) {
-        validate(request, userId);
-        Org org = buildOrg(request, userId);
+        OrgBuilder builder = orgBuilderFactory.create();
+        Org org = builder.tenantId(request.getTenantId())
+                .orgTypeCode(request.getOrgTypeCode())
+                .leaderId(request.getLeaderId())
+                .superiorId(request.getSuperiorId())
+                .name(request.getName())
+                .createdBy(userId)
+                .build();
+
         org = orgRepository.save(org);
         return buildOrgDto(org);
     }
@@ -48,14 +43,5 @@ public class OrgService {
     private OrgDto buildOrgDto(Org org) {
         // 将领域对象的值赋给DTO...
         return null;
-    }
-
-    private Org buildOrg(OrgDto request, Long useId) {
-        // 将DTO的值赋给领域对象...
-        return new Org();
-    }
-
-    private void validate(OrgDto request, Long userId) {
-        //进行各种业务规则的校验，会用到上面的各个Repository...
     }
 }

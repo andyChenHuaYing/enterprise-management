@@ -1,8 +1,8 @@
 package com.unjuanable.adapter.driving.persistence.orgmng;
 
-import com.unjuanable.domain.orgmng.Org;
-import com.unjuanable.domain.orgmng.OrgRepository;
-import com.unjuanable.domain.orgmng.OrgStatus;
+import com.unjuanable.domain.orgmng.org.Org;
+import com.unjuanable.domain.orgmng.org.OrgRepository;
+import com.unjuanable.domain.orgmng.org.OrgStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

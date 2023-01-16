@@ -23,5 +23,41 @@ public class OrgDto {
     private LocalDateTime lastUpdatedAt;
     private Long lastUpdatedBy;
 
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenant(Long tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public String getOrgTypeCode() {
+        return orgTypeCode;
+    }
+
+    public void setOrgType(String orgTypeCode) {
+        this.orgTypeCode = orgTypeCode;
+    }
+
+    public Long getSuperiorId() {
+        return superiorId;
+    }
+
+    public void setSuperior(Long superiorId) {
+        this.superiorId = superiorId;
+    }
+
+    public Long getLeaderId() {
+        return null;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     // getters and setters ...
 }
